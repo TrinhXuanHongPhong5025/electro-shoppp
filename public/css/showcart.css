@@ -1,0 +1,19 @@
+.checkout{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    color: #3498db;
+    /* color: black; */
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 100%;
+}
+.checkout:hover {
+    background-color: #3498db;
+    color: #fff !important;
+}
