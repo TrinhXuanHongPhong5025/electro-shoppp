@@ -267,3 +267,352 @@ INSERT INTO `tbl_order_details` (`order_details_id`, `order_id`, `product_id`, `
 -- Cấu trúc bảng cho bảng `tbl_payment`
 --
 
+CREATE TABLE `tbl_payment` (
+  `payment_id` int(11) NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL,
+  `create_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_payment`
+--
+
+INSERT INTO `tbl_payment` (`payment_id`, `payment_method`, `payment_status`, `create_at`, `update_at`) VALUES
+(8, '2', 'Dang cho xu ly', NULL, NULL),
+(9, '2', 'Dang cho xu ly', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_product`
+--
+
+CREATE TABLE `tbl_product` (
+  `product_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `product_desc` text NOT NULL,
+  `product_content` text NOT NULL,
+  `product_price` varchar(500) NOT NULL,
+  `product_image` varchar(250) NOT NULL,
+  `product_status` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL,
+  `color_id` int(11) NOT NULL,
+  `create_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_product`
+--
+
+INSERT INTO `tbl_product` (`product_id`, `category_id`, `product_name`, `brand_id`, `product_desc`, `product_content`, `product_price`, `product_image`, `product_status`, `size_id`, `color_id`, `create_at`, `update_at`) VALUES
+(6, 4, 'Máy ảnh Sonny', 3, 'Được thiết kế cho người chuyên nghiệp và người hâm mộ có kinh nghiệm', 'Cung cấp nhiều tùy chọn kiểm soát và thay đổi ống kính linh hoạt.', '500000', 'product0994.png', 0, 2, 2, NULL, NULL),
+(8, 2, 'Máy ảnh tầm xa', 2, 'Thường có ống kính cố định và tùy chọn chế độ tự động để chụp hình dễ dàng', 'Là lựa chọn tốt cho du lịch và sử dụng hàng ngày.', '250000', 'product0939.png', 0, 2, 2, NULL, NULL),
+(9, 8, 'Máy tính coder', 4, 'Cung cấp các tính năng tự động và chất lượng hình ảnh đủ tốt cho nhu cầu lập trình', 'Phổ biến trong việc chụp hình nhanh và thuận tiện.', '4000000', 'product0889.png', 0, 2, 1, NULL, NULL),
+(10, 8, 'Máy tính Macbook', 6, 'Máy tính thường nhẹ và nhỏ gọn, dễ mang theo trong các chuyến đi.', 'Phổ biến trong công viêc nhanh và thuận tiện.', '15000000', 'product0132.png', 0, 2, 2, NULL, NULL),
+(11, 8, 'Máy tính mise dragon', 5, 'Cung cấp các tính năng tự động và chất lượng hình ảnh đủ tốt cho nhu cầu IT.', 'Thích hợp cho việc code, thể thao, và các sự kiện từ xa.', '25000000', 'product0696.png', 0, 2, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_shipping`
+--
+
+CREATE TABLE `tbl_shipping` (
+  `shipping_id` int(11) NOT NULL,
+  `shipping_name` varchar(255) NOT NULL,
+  `shipping_address` varchar(255) NOT NULL,
+  `shipping_phone` varchar(255) NOT NULL,
+  `shipping_email` varchar(255) NOT NULL,
+  `shipping_note` text NOT NULL,
+  `create_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_shipping`
+--
+
+INSERT INTO `tbl_shipping` (`shipping_id`, `shipping_name`, `shipping_address`, `shipping_phone`, `shipping_email`, `shipping_note`, `create_at`, `update_at`) VALUES
+(7, 'PhungMinh', 'HaNoi', '0912324340', 'phungminh004@gmail.com', 'gửi nhanh cho anh', NULL, NULL),
+(8, 'anh hai', '123', '09182883833', 'anhhai00@gmail.com', 'gui nhanh', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_size`
+--
+
+CREATE TABLE `tbl_size` (
+  `size_id` int(11) NOT NULL,
+  `size_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_size`
+--
+
+INSERT INTO `tbl_size` (`size_id`, `size_name`) VALUES
+(1, 'cảm biến 24.30mp'),
+(2, 'cảm biến 18.1mp');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Chỉ mục cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_brand`
+--
+ALTER TABLE `tbl_brand`
+  ADD PRIMARY KEY (`brand_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_category_product`
+--
+ALTER TABLE `tbl_category_product`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_color`
+--
+ALTER TABLE `tbl_color`
+  ADD PRIMARY KEY (`color_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_customer`
+--
+ALTER TABLE `tbl_customer`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `FK_order_customer` (`customer_id`),
+  ADD KEY `FK_order_payment` (`payment_id`),
+  ADD KEY `FK_order_shipping` (`shipping_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_order_details`
+--
+ALTER TABLE `tbl_order_details`
+  ADD PRIMARY KEY (`order_details_id`),
+  ADD KEY `FK_order_detal_order` (`order_id`),
+  ADD KEY `FK_order_detal_product` (`product_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `FK_color_product` (`color_id`),
+  ADD KEY `FK_size_product` (`size_id`),
+  ADD KEY `FK_product_category` (`category_id`),
+  ADD KEY `FK_product_brand` (`brand_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_shipping`
+--
+ALTER TABLE `tbl_shipping`
+  ADD PRIMARY KEY (`shipping_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_size`
+--
+ALTER TABLE `tbl_size`
+  ADD PRIMARY KEY (`size_id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_brand`
+--
+ALTER TABLE `tbl_brand`
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_category_product`
+--
+ALTER TABLE `tbl_category_product`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_color`
+--
+ALTER TABLE `tbl_color`
+  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_customer`
+--
+ALTER TABLE `tbl_customer`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_order_details`
+--
+ALTER TABLE `tbl_order_details`
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_shipping`
+--
+ALTER TABLE `tbl_shipping`
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_size`
+--
+ALTER TABLE `tbl_size`
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD CONSTRAINT `FK_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`customer_id`),
+  ADD CONSTRAINT `FK_order_payment` FOREIGN KEY (`payment_id`) REFERENCES `tbl_payment` (`payment_id`),
+  ADD CONSTRAINT `FK_order_shipping` FOREIGN KEY (`shipping_id`) REFERENCES `tbl_shipping` (`shipping_id`);
+
+--
+-- Các ràng buộc cho bảng `tbl_order_details`
+--
+ALTER TABLE `tbl_order_details`
+  ADD CONSTRAINT `FK_order_detal_order` FOREIGN KEY (`order_id`) REFERENCES `tbl_order` (`order_id`),
+  ADD CONSTRAINT `FK_order_detal_product` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`product_id`);
+
+--
+-- Các ràng buộc cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD CONSTRAINT `FK_color_product` FOREIGN KEY (`color_id`) REFERENCES `tbl_color` (`color_id`),
+  ADD CONSTRAINT `FK_product_brand` FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`brand_id`),
+  ADD CONSTRAINT `FK_product_category` FOREIGN KEY (`category_id`) REFERENCES `tbl_category_product` (`category_id`),
+  ADD CONSTRAINT `FK_size_product` FOREIGN KEY (`size_id`) REFERENCES `tbl_size` (`size_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
